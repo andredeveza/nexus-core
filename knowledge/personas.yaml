@@ -1,0 +1,155 @@
+# Personas — AD Tráfego Digital
+# Toda publicação escolhe UMA. (Constituição, Art. 2.2)
+# Derivadas do posicionamento + análise do perfil atual + mercado BR.
+# STATUS: hipótese. Validar com dados reais de DM/comentário nos primeiros 30 dias.
+
+version: 1.0
+updated: 2026-07-15
+
+personas:
+
+  - id: operador_solo
+    name: "Operador Solo"
+    role: "Freelancer, gestor de tráfego, social media, consultor de 1 pessoa"
+    volume: alto          # maior parte da audiência
+    ticket: baixo-médio
+
+    reality: |
+      Atende de 3 a 10 clientes. Faz tudo na mão.
+      Trabalha 10h/dia e o gargalo é ele mesmo.
+      Já usa ChatGPT, mas como chat — copia e cola, não como sistema.
+
+    pain:
+      - "Não escalo porque tudo passa por mim"
+      - "Uso IA e continuo demorando o mesmo tanto"
+      - "Vejo gente falando de automação e não sei onde começa"
+      - "Tenho medo de ser substituído por quem automatizou primeiro"
+
+    objection:
+      - "Isso é pra quem sabe programar"
+      - "Vou gastar mais tempo montando do que fazendo na mão"
+      - "Meu cliente é pequeno, não justifica"
+
+    wants: "Sistema pronto pra clonar. Não quer aprender — quer copiar e rodar."
+
+    hooks_that_work:
+      - número de horas recuperadas
+      - "o que eu parei de fazer"
+      - erro caro que ele também comete
+      - antes/depois de tempo
+
+    ladder_step: playbook   # R$ 97 → Blueprint R$ 497
+
+  - id: dono_pme
+    name: "Dono de PME Digital"
+    role: "Dono de agência pequena, e-commerce, infoprodutor — 1 a 10 pessoas"
+    volume: baixo
+    ticket: alto
+
+    reality: |
+      Tem time. Tem folha. Vê custo antes de ver possibilidade.
+      Não vai operar nada — vai contratar ou mandar alguém operar.
+      Decide por risco, não por curiosidade.
+
+    pain:
+      - "Pago 3 pessoas pra fazer o que uma IA faria"
+      - "Meu time usa IA sem padrão, cada um do seu jeito"
+      - "Não sei o que é hype e o que dá pra implantar"
+      - "Testei automação e quebrou, perdi confiança"
+
+    objection:
+      - "Já tentei e não funcionou"
+      - "Quanto custa manter isso rodando?"
+      - "E quando quebrar, quem arruma?"
+
+    wants: "Alguém que já operou e mostra o custo real. Compra implementação, não curso."
+
+    hooks_that_work:
+      - custo em R$/mês
+      - o que quebrou e quanto custou
+      - comparação: pessoa vs. sistema
+      - risco declarado antes da promessa
+
+    ladder_step: implementacao   # R$ 5-15k
+
+  - id: construtor
+    name: "Construtor"
+    role: "Dev, no-code builder, entusiasta técnico"
+    volume: médio
+    ticket: médio
+
+    reality: |
+      Não quer solução pronta. Quer a arquitetura.
+      Vai olhar o repo antes de olhar a oferta.
+      É quem compartilha — a distribuição vem dele.
+
+    pain:
+      - "Todo mundo mostra o resultado, ninguém mostra o schema"
+      - "Tutorial de IA é sempre superficial"
+      - "Quero ver decisão de arquitetura, não prompt bonito"
+
+    objection:
+      - "Isso é só um wrapper de ChatGPT"
+      - "Mostra o código ou não aconteceu"
+
+    wants: "Repo, schema, contrato entre agentes, decisões justificadas."
+
+    hooks_that_work:
+      - decisão técnica contra-intuitiva
+      - custo por chamada
+      - "por que eu NÃO usei X"
+      - diagrama de arquitetura
+      - erro de arquitetura admitido
+
+    ladder_step: gratis   # é lead de autoridade e distribuição, não de receita direta
+
+# ---------------------------------------------------------------------------
+
+offer_ladder:
+
+  - step: gratis
+    name: "nexus-core (GitHub público)"
+    price: 0
+    goal: autoridade + lead + distribuição
+    persona: construtor
+    note: "O repo É o conteúdo. Prova a tese."
+
+  - step: playbook
+    name: "PlaybookIA"
+    price: 97
+    url: playbookia.online
+    goal: venda + qualificação
+    persona: operador_solo
+    note: "Já existe. Vira downsell / porta de entrada."
+
+  - step: blueprint
+    name: "Nexus Blueprint"
+    price: 497
+    goal: venda
+    persona: operador_solo
+    status: não_existe_ainda
+    content: "Sistema completo: flows n8n, schema Supabase, prompts, Design System aplicado"
+    note: "Só constrói depois de validar Fase 1. Não construir produto antes de audiência."
+
+  - step: implementacao
+    name: "Implementação Nexus"
+    price: "5000-15000"
+    goal: venda
+    persona: dono_pme
+    status: sob_demanda
+    note: "Vem de DM, não de funil. Autoridade → conversa → proposta."
+
+# ---------------------------------------------------------------------------
+
+routing:
+  # Como o Estrategista escolhe persona a partir do sinal
+  erro_proprio: construtor
+  metrica: operador_solo
+  arquitetura: construtor
+  custo: dono_pme
+  ferramenta: operador_solo
+  debate: construtor
+
+conflict_rule: |
+  Empate entre personas → escolhe a de menor volume publicado nos últimos 10 posts.
+  Balanceia o feed sem intervenção humana.

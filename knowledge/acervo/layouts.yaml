@@ -1,0 +1,125 @@
+# Acervo de Layouts
+# O Diretor de Arte escolhe daqui. NUNCA inventa. (Const. Art. 9.1)
+# Fonte de verdade: github.com/andredeveza/ADTrafegoDigital_DesignSystem
+
+version: 1.0
+
+formats:
+  feed: "1080x1350"
+  stories_reels: "1080x1920"
+  highlights: "circular"
+
+layouts:
+
+  - id: hero
+    use: "Card 1 de carrossel · capa de Reels"
+    mode: [dark, light]
+    tokens:
+      bg: "--ink"
+      title: "--title"
+      accent: "--blue"
+    content:
+      title: "≤ 8 palavras, Satoshi 900, 46px+, tracking -.02em"
+      subtitle: "opcional, General Sans 400, 20px"
+    rules:
+      - "Uma ideia. Só."
+      - "Sem foto se o título for forte. Foto compete com texto."
+      - "Neon só em glow de fundo, nunca no texto"
+
+  - id: data
+    use: "Mostrar número · comparação · custo"
+    mode: [dark]
+    tokens:
+      bg: "--graphite"
+      number: "--neon"
+      label: "--gray"
+    content:
+      number: "JetBrains Mono 500, tamanho display"
+      label: "General Sans 400, 15px"
+    rules:
+      - "O número é o herói. Tudo mais é legenda."
+      - "Máximo 2 números por card. Se precisa de 3, são 2 cards."
+
+  - id: screen
+    use: "Print de tela · terminal · log · erro"
+    mode: [dark]
+    tokens:
+      bg: "--ink"
+      frame: "--slate"
+    content:
+      screenshot: "obrigatório — real, nunca mockup"
+      caption: "JetBrains Mono 400, 15px"
+    rules:
+      - "Print real. Mockup de tela é violação da tese."
+      - "Erro em vermelho não se esconde — se destaca."
+      - "Blur só no fundo, nunca no conteúdo"
+
+  - id: quote
+    use: "Princípio · frase editorial"
+    mode: [light]
+    tokens:
+      bg: "--bg-light"
+      text: "--title-light"
+      accent: "--cta-light"
+    content:
+      quote: "Instrument Serif 400 — a fonte editorial"
+    rules:
+      - "Modo claro obrigatório. Cria o ritmo do feed (Art. 9.5)."
+      - "Sem foto. Sem ícone. Só a frase."
+
+  - id: split
+    use: "Antes/depois · comparação lado a lado"
+    mode: [dark, light]
+    tokens:
+      left_bg: "--graphite"
+      right_bg: "--loud"
+    rules:
+      - "Simetria rígida. Mesmo peso visual dos dois lados."
+      - "Rótulo em JetBrains Mono uppercase"
+
+  - id: architecture
+    use: "Diagrama de camadas · fluxo"
+    mode: [dark]
+    tokens:
+      bg: "--ink"
+      node: "--slate"
+      edge: "--blue"
+      highlight: "--neon"
+    rules:
+      - "Grid técnico fino de fundo — assinatura da marca"
+      - "Máximo 7 nós. Mais que isso, quebra em 2 cards."
+      - "Neon marca APENAS o nó em discussão"
+
+  - id: founder
+    use: "Rosto · autoridade · fala direta"
+    mode: [dark]
+    assets: [founder-dark, founder-office, founder-window]
+    rules:
+      - "Foto em card arredondado, nunca sangrando"
+      - "Usar com moderação — feed atual satura de rosto"
+      - "founder-dark: conteúdo técnico · founder-office: conteúdo de negócio"
+
+  - id: cta_final
+    use: "Último card de carrossel"
+    mode: [dark]
+    tokens:
+      bg: "--blue-deep"
+      text: "--title"
+    rules:
+      - "UM CTA. (Art. 5.2)"
+      - "Sem repetir o conteúdo. Só a ação."
+
+chrome:
+  top: "@trafegodigitalad · AD TRÁFEGO DIGITAL · ©2026"
+  bottom: "✦ ARRASTE PARA O LADO →"
+  font: "JetBrains Mono, uppercase, tracking largo"
+  note: "Chrome é obrigatório em carrossel editorial"
+
+rhythm_rule: |
+  Consultar os 6 últimos posts do feed antes de escolher `mode`.
+  Nunca 3 posts seguidos no mesmo modo. (Art. 9.5)
+
+density_rule: |
+  Uma ideia por card. (Art. 9.6)
+  Correção explícita do padrão atual do feed — que empilha 6 features por card.
+  Se o card precisa de scroll mental, ele falhou.

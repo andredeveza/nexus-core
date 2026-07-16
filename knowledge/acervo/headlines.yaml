@@ -1,0 +1,76 @@
+# Acervo de Headlines
+# Constituição Art. 6: máx 8 palavras · tensão OU especificidade · nunca clickbait vazio
+
+version: 1.0
+
+rules:
+  max_words: 8
+  must_have: "tensão ou especificidade — preferencialmente as duas"
+  forbidden: "headline que o conteúdo não entrega (Art. 6.3 — violação grave)"
+
+patterns:
+
+  - id: numero_tensao
+    template: "{n} {coisas}. {n_menor} {problema}."
+    example: "7 agentes. 1 gargalo."
+    words: 4
+    tension: alta
+    specificity: alta
+
+  - id: negacao_consenso
+    template: "Por que eu não uso {ferramenta}"
+    example: "Por que eu não uso Neo4j"
+    words: 6
+    tension: alta
+    specificity: média
+
+  - id: custo_por_unidade
+    template: "US$ {x} por {unidade_absurda}"
+    example: "US$ 7,75 por decisão de 10 segundos"
+    words: 7
+    tension: alta
+    specificity: alta
+
+  - id: regra_seca
+    template: "{coisa_barata} antes de {coisa_cara}"
+    example: "Filtro burro antes de agente caro"
+    words: 6
+    tension: média
+    specificity: alta
+    note: "Vira princípio memorizável. Melhor formato para carrossel."
+
+  - id: confissao
+    template: "O erro que me custou {valor}"
+    example: "O erro que me custou R$ 400"
+    words: 6
+    tension: alta
+    specificity: alta
+
+  - id: delta
+    template: "{tarefa}: {antes} → {depois}"
+    example: "Roteiro: 40min → 4min"
+    words: 4
+    tension: baixa
+    specificity: alta
+
+  - id: arquitetura
+    template: "A camada que {faz_algo_contra_intuitivo}"
+    example: "A camada que não usa IA"
+    words: 6
+    tension: alta
+    specificity: média
+
+  - id: autopsia
+    template: "Matei {coisa}. Aqui está o motivo."
+    example: "Matei um agente. Aqui está o motivo."
+    words: 6
+    tension: alta
+    specificity: média
+
+banned:
+  - "O segredo que ninguém conta"
+  - "Isso mudou tudo"
+  - "Você não vai acreditar"
+  - "Método infalível"
+  - "A IA vai te substituir"
+  - qualquer headline com emoji de alerta 🚨

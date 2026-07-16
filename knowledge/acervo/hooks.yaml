@@ -1,0 +1,92 @@
+# Acervo de Hooks
+# O Copywriter consulta AQUI antes de criar. (README, regra final)
+# Hook = os 2 primeiros segundos. Se falhar, nada mais importa.
+
+version: 1.0
+
+rules:
+  - "Máximo 2 segundos de leitura/fala"
+  - "Nunca abrir com logo, intro ou 'fala pessoal'"
+  - "Nunca abrir com 'hoje eu vou te mostrar'"
+  - "Se tem adjetivo, está errado"
+
+patterns:
+
+  - id: numero_cru
+    template: "{valor}. {consequência_seca}."
+    example: "US$ 4,20 por dia. Só em desperdício."
+    persona: [operador_solo, dono_pme]
+    why: "Número sem contexto força o cérebro a buscar o contexto."
+    performance: null
+
+  - id: contradicao
+    template: "Meu {coisa} mais {adjetivo_positivo} é o mais {adjetivo_negativo} do sistema."
+    example: "Meu agente mais caro é o mais burro do sistema."
+    persona: [construtor]
+    why: "Contradição interna não resolve sozinha. Obriga a continuar."
+    performance: null
+
+  - id: erro_proprio
+    template: "{sistema} {ação} ontem. {ação} errado."
+    example: "O Nexus publicou sozinho ontem. Publicou errado."
+    persona: [construtor, operador_solo]
+    why: "Erro admitido é a prova de que existe operação real. É a tese."
+    performance: null
+
+  - id: matei
+    template: "Matei {coisa} hoje. {motivo em número}."
+    example: "Matei um agente hoje. US$ 7,75 por decisão que eu tomo em 10 segundos."
+    persona: [construtor, dono_pme]
+    why: "Decisão irreversível gera tensão. Número justifica."
+    performance: null
+
+  - id: por_que_nao
+    template: "Por que eu NÃO usei {ferramenta_popular}."
+    example: "Por que eu NÃO usei Neo4j no knowledge graph."
+    persona: [construtor]
+    why: "Vai contra o consenso. Construtor para pra discordar."
+    performance: null
+
+  - id: antes_depois_tempo
+    template: "{tarefa}: {antes} → {depois}."
+    example: "Roteiro de Reels: 40min → 4min."
+    persona: [operador_solo]
+    why: "Delta concreto. Sem promessa, só medida."
+    performance: null
+
+  - id: tela_muda
+    template: "[sem narração — tela em movimento nos 2 primeiros segundos]"
+    example: "[terminal rodando, log subindo, erro em vermelho]"
+    persona: [construtor]
+    why: "Movimento segura sozinho. Voz nos 2s primeiros compete com o visual."
+    performance: null
+
+  - id: custo_mensal
+    template: "{sistema} custa R$ {x} por mês. {comparação humana}."
+    example: "O Nexus inteiro custa R$ 280/mês. Menos que meio dia de freelancer."
+    persona: [dono_pme]
+    why: "PME decide por custo. Ancora contra folha, não contra concorrente."
+    performance: null
+
+  - id: quebrou_as_3h
+    template: "{hora}. {o que quebrou}. {causa em uma linha}."
+    example: "3h da manhã. Publisher tentou 4 vezes. Rate limit — burrice minha, não da IA."
+    persona: [construtor]
+    why: "Especificidade temporal = veracidade. Culpa própria = credibilidade."
+    performance: null
+
+  - id: conta_regressiva
+    template: "{n} {itens}. {n-x} eram lixo."
+    example: "Meu Radar puxou 40 notícias ontem. 38 eram lixo."
+    persona: [operador_solo, construtor]
+    why: "Assimetria numérica cria curiosidade sobre o filtro."
+    performance: null
+
+banned_openings:
+  - "Fala pessoal"
+  - "Hoje eu vou te mostrar"
+  - "Você sabia que"
+  - "Presta atenção nisso"
+  - "Isso vai mudar sua vida"
+  - "Ninguém te conta isso"
+  - qualquer logo ou intro animada

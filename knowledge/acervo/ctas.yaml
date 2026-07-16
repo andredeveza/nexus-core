@@ -1,0 +1,93 @@
+# Acervo de CTAs
+# Constituição Art. 7: UM CTA por peça · ação concreta · baixo atrito
+# Art. 7.2: "comenta X" só se a entrega for automatizada e REAL
+# Art. 7.3: proibido "salva aí", "marca um amigo", "segue pra mais"
+
+version: 1.0
+
+ctas:
+
+  - id: repo_link
+    text: "Tá no repo. Link na bio."
+    objective: autoridade
+    persona: construtor
+    ladder: gratis
+    friction: baixo
+    requires: "o item precisa realmente estar no repo"
+    performance: null
+
+  - id: repo_especifico
+    text: "O {arquivo} tá em nexus-core/{caminho}."
+    objective: autoridade
+    persona: construtor
+    ladder: gratis
+    friction: baixo
+    requires: "caminho real e público"
+    note: "Mais forte que 'link na bio' — prova que existe."
+
+  - id: dm_diagnostico
+    text: "Manda 'NEXUS' na DM que eu te mostro onde tá seu gargalo."
+    objective: lead
+    persona: [operador_solo, dono_pme]
+    ladder: implementacao
+    friction: médio
+    requires: "resposta humana ou agente real na DM — senão é violação do Art. 7.2"
+    performance: null
+
+  - id: pergunta_aberta
+    text: "Qual camada do teu processo ainda é 100% na mão?"
+    objective: retencao
+    persona: operador_solo
+    ladder: gratis
+    friction: baixo
+    note: "Comentário qualificado > comentário de engajamento. Alimenta o Radar interno."
+    performance: null
+
+  - id: discordancia
+    text: "Se você acha que eu errei aqui, comenta. Sério."
+    objective: distribuicao
+    persona: construtor
+    ladder: gratis
+    friction: baixo
+    note: "Discordância gera thread. Thread gera alcance. Só usar quando você aguenta a resposta."
+    performance: null
+
+  - id: playbook
+    text: "Os prompts que eu uso tão no PlaybookIA. Link na bio."
+    objective: venda
+    persona: operador_solo
+    ladder: playbook
+    friction: médio
+    performance: null
+
+  - id: blueprint_lista
+    text: "Tô montando o Blueprint completo. Quem quiser antes, DM."
+    objective: lead
+    persona: operador_solo
+    ladder: blueprint
+    friction: médio
+    status: usar_apenas_na_fase_2
+    note: "Não usar antes de existir. Prometer produto inexistente queima a tese."
+
+  - id: nenhum
+    text: null
+    objective: autoridade
+    persona: qualquer
+    friction: zero
+    note: |
+      CTA opcional é válido. Conteúdo puro de autoridade pode não pedir nada.
+      Usar em ~2 de cada 10 publicações. Aumenta o peso do CTA quando ele aparece.
+
+banned:
+  - "Salva aí pra não perder"
+  - "Marca um amigo que precisa ver"
+  - "Segue pra mais conteúdo"
+  - "Curte se você concorda"
+  - "Compartilha nos stories"
+  - "Comenta EU QUERO"   # sem entrega automatizada = Art. 7.2
+
+distribution_rule: |
+  Por ciclo de 10 publicações (Const. Art. 5.3):
+    6 × autoridade/distribuição → repo_link, repo_especifico, pergunta_aberta, discordancia, nenhum
+    3 × lead                    → dm_diagnostico, blueprint_lista
+    1 × venda                   → playbook
